@@ -1,0 +1,10 @@
+syntax = "proto3";
+
+package SchemaRegistry;
+
+option csharp_namespace="SchemaRegistry";
+
+message KafkaFlowMessage {
+    string Message = 1;
+    int32 Code = 2;
+}
