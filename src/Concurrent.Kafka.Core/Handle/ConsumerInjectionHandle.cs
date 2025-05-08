@@ -53,27 +53,27 @@ public static class ConsumerInjectionHandle
                             : TimeSpan.FromMinutes(1)
                     );
                 else
-                    consumer.WithWorkersCount(
-                        (WorkersCountContext context, IDependencyResolver resolver) =>
-                            new HybridWorkerBalancer(
-                                resolver.Resolve<ILogHandler>(),
-                                resolver.Resolve<IClusterManager>(),
-                                resolver.Resolve<IConsumerAccessor>(),
-                                totalWorkers: concurrentConfig.TotalWorkers,
-                                minInstanceWorkers: concurrentConfig.MinInstanceWorkers,
-                                maxInstanceWorkers: concurrentConfig.MaxInstanceWorkers
-                            ).GetWorkersCountAsync(context),
-                        evaluationInterval: workerBalanceInterval != null
+                    //  consumer.WithWorkersCount(
+                    //      (WorkersCountContext context, IDependencyResolver resolver) =>
+                    //          new HybridWorkerBalancer(
+                    //              resolver.Resolve<ILogHandler>(),
+                    //              resolver.Resolve<IClusterManager>(),
+                    //              resolver.Resolve<IConsumerAccessor>(),
+                    //              totalWorkers: concurrentConfig.TotalWorkers,
+                    //              minInstanceWorkers: concurrentConfig.MinInstanceWorkers,
+                    //              maxInstanceWorkers: concurrentConfig.MaxInstanceWorkers
+                    //          ).GetWorkersCountAsync(context),
+                    //      evaluationInterval: workerBalanceInterval != null
+                    //          ? (TimeSpan)workerBalanceInterval
+                    //          : TimeSpan.FromSeconds(30)
+                    //  );
+                    consumer.WithConsumerLagWorkerBalancer(
+                        totalWorkers: concurrentConfig.TotalWorkers,
+                        minInstanceWorkers: concurrentConfig.MinInstanceWorkers,
+                        maxInstanceWorkers: concurrentConfig.MaxInstanceWorkers,
+                        workerBalanceInterval != null
                             ? (TimeSpan)workerBalanceInterval
-                            : TimeSpan.FromSeconds(30)
-                    );
-                // consumer.WithConsumerLagWorkerBalancer(
-                //     totalWorkers: concurrentConfig.TotalWorkers,
-                //     minInstanceWorkers: concurrentConfig.MinInstanceWorkers,
-                //     maxInstanceWorkers: concurrentConfig.MaxInstanceWorkers,
-                //     workerBalanceInterval != null
-                //         ? (TimeSpan)workerBalanceInterval
-                //         : TimeSpan.FromMinutes(1));
+                            : TimeSpan.FromMinutes(1));
             }
             #endregion
 
