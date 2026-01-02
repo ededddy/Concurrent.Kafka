@@ -1,21 +1,22 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
     <PropertyGroup>
-        <TargetFramework>net8.0</TargetFramework>
+		<TargetFrameworks>net8.0;net9.0</TargetFrameworks>
         <Nullable>enable</Nullable>
         <ImplicitUsings>enable</ImplicitUsings>
     </PropertyGroup>
 
     <ItemGroup>
       <PackageReference Include="AspNetCore.HealthChecks.Kafka" Version="8.0.1" />
-      <PackageReference Include="Microsoft.Extensions.Configuration" Version="8.0.0" />
-      <PackageReference Include="Microsoft.Extensions.Configuration.Binder" Version="8.0.0" />
-      <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="8.0.1" />
-      <PackageReference Include="KafkaFlow.LogHandler.Microsoft" Version="3.0.10" />
-      <PackageReference Include="KafkaFlow.LogHandler.Console" Version="3.0.10" />
-      <PackageReference Include="KafkaFlow.Admin" Version="3.0.10" />
-      <PackageReference Include="KafkaFlow.Admin.WebApi" Version="3.0.10" />
-      <PackageReference Include="KafkaFlow.Admin.Dashboard" Version="3.0.10" />
+      <PackageReference Include="Microsoft.Extensions.Configuration" Version="9.0.3" />
+      <PackageReference Include="Microsoft.Extensions.Configuration.Binder" Version="9.0.3" />
+      <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="9.0.3" />
+
+      <PackageReference Include="KafkaFlow.LogHandler.Microsoft" Version="4.1.0" />
+      <PackageReference Include="KafkaFlow.LogHandler.Console" Version="4.1.0" />
+      <PackageReference Include="KafkaFlow.Admin" Version="4.1.0" />
+      <PackageReference Include="KafkaFlow.Admin.WebApi" Version="4.1.0" />
+      <PackageReference Include="KafkaFlow.Admin.Dashboard" Version="4.1.0" />
     </ItemGroup>
 
     <ItemGroup>
